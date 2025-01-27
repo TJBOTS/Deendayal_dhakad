@@ -54,8 +54,8 @@ MULTI_FSUB = [int(channel_id) for channel_id in environ.get('AUTH_CHANNEL', '-10
 # ============================
 # MongoDB Configuration
 # ============================
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_URI2 = environ.get('DATABASE_URI2', "")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://teekam_jaat:9571404334@teekam.dwrhczx.mongodb.net/?retryWrites=true&w=majority&appName=Teekam")
+DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb+srv://teekam9079:teekam@teekam.iz7qm.mongodb.net/?retryWrites=true&w=majority&appName=Teekam")
 DATABASE_NAME = environ.get('DATABASE_NAME', "tjbot")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'tjbotdatabase')
 
@@ -78,8 +78,8 @@ HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://t.me/Deenu_dhakad')  # How
 # Link Shortener Configuration
 # ============================
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', True))
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'speedlinkurl.com')
-SHORTLINK_API = environ.get('SHORTLINK_API', 'bec9ce4b25695c1c7539b44dc8983ab5f54b1320')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'shortxlinks.com')
+SHORTLINK_API = environ.get('SHORTLINK_API', '40953a3cd91c66b8fb8ebc21e301dd3d87e29607')
 TUTORIAL = environ.get('TUTORIAL', 'https://t.me/How_To_Download_Movie_Video/7')  # Tutorial video link for opening shortlink website
 IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', False))
 
