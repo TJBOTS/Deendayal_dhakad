@@ -17,22 +17,16 @@ async def broadcast(bot, message):
     done = 0
     blocked = 0
     deleted = 0
-    failed =0
+    failed = 0
     success = 0
 
-    btn = InlineKeyboardMarkup(
-        [
-            [InlineKeyboardButton(" Sᴇᴀʀᴄʜ ʜᴇʀᴇ", url=GRP_LNK)]
-        ]
-    )
-
     async for user in users:
-        pti, sh = await broadcast_messages(int(user['id']), b_msg, reply_markup=btn)
+        pti, sh = await broadcast_messages(int(user['id']), b_msg)
         if pti:
             success += 1
         elif pti == False:
             if sh == "Blocked":
-                blocked+=1
+                blocked += 1
             elif sh == "Deleted":
                 deleted += 1
             elif sh == "Error":
@@ -40,10 +34,15 @@ async def broadcast(bot, message):
         done += 1
         if not done % 20:
             await sts.edit(f"Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss:\n\nTᴏᴛᴀʟ Uꜱᴇʀꜱ {total_users}\nCᴏᴍᴩʟᴇᴛᴇᴅ: {done} / {total_users}\nSᴜᴄᴄᴇꜱꜱ: {success}\nBʟᴏᴄᴋᴇᴅ: {blocked}\nDᴇʟᴇᴛᴇᴅ: {deleted}")    
-    time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
-    await sts.delete()
-    await bot.send_message(message.chat.id, f"Bʀᴏᴀᴅᴄᴀsᴛ Coᴍᴩʟᴇᴛᴇᴅ:\nTɪᴍᴇ Tᴀᴋᴇᴅ{time_taken} Sᴇᴄ\n\nTᴏᴛᴀʟ Uꜱᴇʀꜱ: {total_users}\nCᴏᴍᴩʟᴇᴛᴇᴅ: {done} / {total_users}\nSucᴄᴇꜱꜱ: {success}\nBʟᴏᴄᴋᴇᴅ: {blocked}\nDᴇʟᴇᴛᴇᴅ: {deleted}")
 
+    time_taken = datetime.timedelta(seconds=int(time.time() - start_time))
+    await sts.delete()
+    await bot.send_message(
+        message.chat.id, 
+        f"Bʀᴏᴀᴅᴄᴀsᴛ Coᴍᴩʟᴇᴛᴇᴅ:\nTɪᴍᴇ Tᴀᴋᴇɴ: {time_taken} Sᴇᴄ\n\n"
+        f"Tᴏᴛᴀʟ Uꜱᴇʀꜱ: {total_users}\nCᴏᴍᴩʟᴇᴛᴇᴅ: {done} / {total_users}\n"
+        f"Sucᴄᴇꜱꜱ: {success}\nBʟᴏᴄᴋᴇᴅ: {blocked}\nDᴇʟᴇᴛᴇᴅ: {deleted}"
+    )
 
 @Client.on_message(filters.command("clear_junk") & filters.user(ADMINS))
 async def remove_junkuser__db(bot, message):
